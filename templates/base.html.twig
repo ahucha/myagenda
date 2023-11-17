@@ -7,38 +7,26 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title> {% block title %}MyAgenda{% endblock %}</title>
-    <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-    <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{asset('css/styles.css') }}" rel="stylesheet" />
-
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    {% endblock %}
+{% endblock %}
 </head>
 
 {% block nav %}
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="{{ path('accueil') }}">MyAgenda</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    {# <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ path('accueil') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ path('formAnnonce') }}"> </li>Ajouter annonce </a></li> #}
-                    {# <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ path('annonce_delete') }}"> <button type="button" class="btn btn-danger">Supprimer annonce</button> </a> </li> #}
-                </ul>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="{{ path('accueil') }}">MyAgenda</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ path('accueil') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ path('formContact') }}"> </li>Ajouter Contact </a></li>
+                {# <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ path('annonce_delete') }}"> <button type="button" class="btn btn-danger">Supprimer annonce</button> </a> </li> #}
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 {% endblock %}
 
 <body>

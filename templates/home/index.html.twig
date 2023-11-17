@@ -12,11 +12,13 @@
             <tr>  
                 <th scope="col"></th> 
                 <th scope="col"></th> 
+                <th scope="col"></th> 
                 <th scope="col">Nom</th>
                 <th scope="col">Prenom</th>
                 <th scope="col">Email</th>
                 <th scope="col">Tel</th>
             </tr>
+            
             </thead>
             <tbody>
             {% for contact in contact %}
@@ -26,6 +28,9 @@
                 </th>
                 <th scope="row">
                     <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('contactSupprimer', {id:contact.id}) }}"><i class="bi bi-trash"></i></i></a></div>
+                </th>
+                <th scope="row">
+                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('contactModifier', {id:contact.id}) }}"><i class="bi bi-pen"></i></i></a></div>
                 </th>
                 <td>
                     {{ contact.nom }}
