@@ -25,20 +25,21 @@ class ContactController extends AbstractController
     #[Route('/contact/supprimer/{id}', name: 'contactSupprimer')]
     public function delete(ManagerRegistry $doctrine, $id)
     {
-        // $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->denyAccessUnlessGranted('ROLE_USER');
 
         $contact = $doctrine->getRepository(Contact::class)->find($id);
         $entityManager = $doctrine->getManager();
         $entityManager->remove($contact);
         $entityManager->flush();
 
+        $this->addFlash('success', "Le contact a bien été suprimée");
         return $this->redirectToRoute('accueil');
     }
 
     #[Route('/contact/Ajouter', name: 'formContact')]
     public function addContact(ManagerRegistry $doctrine ,Request $request)
     {
-        // $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->denyAccessUnlessGranted('ROLE_USER');
 
         $entityManager = $doctrine->getManager();
         $contact = new Contact();
@@ -50,6 +51,7 @@ class ContactController extends AbstractController
             $entityManager->persist($contact);
             $entityManager->flush();
 
+            $this->addFlash('success', "Le contact a bien été ajoutée");
             return $this->redirectToRoute('accueil');
         }
        return $this->render('/Form/ContactType.html.twig',[
@@ -60,7 +62,7 @@ class ContactController extends AbstractController
     #[Route('/contact/modifier/{id}', name:'contactModifier')]
     public function modifContact(ManagerRegistry $doctrine, Request $request, $id)
     {
-        // $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->denyAccessUnlessGranted('ROLE_USER');
 
         $entityManager = $doctrine->getManager();
         $contact = $doctrine->getRepository(Contact::class)->find($id);
@@ -71,7 +73,7 @@ class ContactController extends AbstractController
         {
             $entityManager->flush();
 
-            // $this->addFlash('succes', "L'annonce a bien été ajoutée");
+            $this->addFlash('success', "Le contact a bien été modifiée");
 
             return $this->redirectToRoute('accueil');
         }

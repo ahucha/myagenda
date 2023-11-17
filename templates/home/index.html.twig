@@ -3,6 +3,11 @@
 {% block title %}Accueil - Liste des contacts{% endblock %}
 
 {% block body %}
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+{% endfor %}
 <div class="content">
     
 <div class="container">
@@ -27,7 +32,7 @@
                     <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('contactAfficher', {id:contact.id}) }}"><i class="bi bi-eye"></i></a></div>
                 </th>
                 <th scope="row">
-                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('contactSupprimer', {id:contact.id}) }}"><i class="bi bi-trash"></i></i></a></div>
+                    <div class="text-center"><a onclick="return confirm('Supprimer Contact?')" class="btn btn-outline-dark mt-auto" href="{{ path('contactSupprimer', {id:contact.id}) }}"><i class="bi bi-trash"></i></i></a></div>
                 </th>
                 <th scope="row">
                     <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('contactModifier', {id:contact.id}) }}"><i class="bi bi-pen"></i></i></a></div>
