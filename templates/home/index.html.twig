@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Liste des contacts{% endblock %}
+
+{% block body %}
+<div class="content">
+    
+<div class="container">
+    <div class="table-responsive custom-table-responsive">
+        <table class="table custom-table">
+            <thead>
+            <tr>  
+                <th scope="col"></th> 
+                <th scope="col"></th> 
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Email</th>
+                <th scope="col">Tel</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for contact in contact %}
+            <tr scope="row">
+                <th scope="row">
+                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('contactAfficher', {id:contact.id}) }}"><i class="bi bi-eye"></i></a></div>
+                </th>
+                <th scope="row">
+                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('contactSupprimer', {id:contact.id}) }}"><i class="bi bi-trash"></i></i></a></div>
+                </th>
+                <td>
+                    {{ contact.nom }}
+                </td>
+                <td> {{ contact.prenom }} </a></td>
+                <td>
+                    {{ contact.email }}
+                </td>
+                <td>{{ contact.telephone }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
